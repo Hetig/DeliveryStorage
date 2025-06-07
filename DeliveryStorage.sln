@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35828.75 d17.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryStorage.API", "DeliveryStorage\DeliveryStorage.API.csproj", "{5D30E1BD-D45E-454F-94D2-4D6777AF18DF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryStorage.API", "DeliveryStorage.API\DeliveryStorage.API.csproj", "{5D30E1BD-D45E-454F-94D2-4D6777AF18DF}"
 	ProjectSection(ProjectDependencies) = postProject
 		{3F03271A-60C3-4C37-9E49-26672129B20A} = {3F03271A-60C3-4C37-9E49-26672129B20A}
 		{9BE64B7C-F1D5-4DD4-8861-2672022CC6DF} = {9BE64B7C-F1D5-4DD4-8861-2672022CC6DF}
@@ -14,14 +14,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryStorage.Domain", "D
 		{9BE64B7C-F1D5-4DD4-8861-2672022CC6DF} = {9BE64B7C-F1D5-4DD4-8861-2672022CC6DF}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryStorage.Database", "DeliveryStorage.Db\DeliveryStorage.Database.csproj", "{9BE64B7C-F1D5-4DD4-8861-2672022CC6DF}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryStorage.Tests", "DeliveryStorage.Tests\DeliveryStorage.Tests.csproj", "{3AFF60D0-755E-4E69-BA7E-272E1F19D262}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A51ECCEA-496D-4ABF-B890-21CEAC7EE75B}"
 	ProjectSection(SolutionItems) = preProject
 		compose.yaml = compose.yaml
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryStorage.Database", "DeliveryStorage.Database\DeliveryStorage.Database.csproj", "{9A5C5733-AD84-4B2D-ABC7-28629526A089}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,14 +37,14 @@ Global
 		{3F03271A-60C3-4C37-9E49-26672129B20A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F03271A-60C3-4C37-9E49-26672129B20A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F03271A-60C3-4C37-9E49-26672129B20A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9BE64B7C-F1D5-4DD4-8861-2672022CC6DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9BE64B7C-F1D5-4DD4-8861-2672022CC6DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9BE64B7C-F1D5-4DD4-8861-2672022CC6DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9BE64B7C-F1D5-4DD4-8861-2672022CC6DF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3AFF60D0-755E-4E69-BA7E-272E1F19D262}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3AFF60D0-755E-4E69-BA7E-272E1F19D262}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3AFF60D0-755E-4E69-BA7E-272E1F19D262}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3AFF60D0-755E-4E69-BA7E-272E1F19D262}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A5C5733-AD84-4B2D-ABC7-28629526A089}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A5C5733-AD84-4B2D-ABC7-28629526A089}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A5C5733-AD84-4B2D-ABC7-28629526A089}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A5C5733-AD84-4B2D-ABC7-28629526A089}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

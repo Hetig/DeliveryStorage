@@ -3,6 +3,10 @@ using Serilog;
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using DeliveryStorage.Database.Data;
+using DeliveryStorage.Database.Interfaces;
+using DeliveryStorage.Database.Repositories;
+using DeliveryStorage.Domain.Interfaces;
+using DeliveryStorage.Domain.Services;
 
 var builder = WebApplication.CreateBuilder(args);
  
@@ -27,6 +31,13 @@ builder.Services.AddDbContext<DatabaseContext>(options =>
     var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
     options.UseNpgsql(connectionString);
 });
+
+builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+builder.Services.AddScoped<IBoxService, BoxService>();
+builder.Services.AddScoped<IPalletService, PalletService>();
+
+builder.Services.AddAutoMapper(typeof(DeliveryStorage.Domain.Mapping.MappingProfile));
+builder.Services.AddAutoMapper(typeof(DeliveryStorage.API.Mapping.MappingProfile));
 
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();

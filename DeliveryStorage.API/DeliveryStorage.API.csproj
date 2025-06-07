@@ -7,6 +7,11 @@
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
+<PropertyGroup>
+  <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  <NoWarn>$(NoWarn);1591</NoWarn>
+</PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="14.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.3" />
@@ -23,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DeliveryStorage.Db\DeliveryStorage.Database.csproj" />
+    <ProjectReference Include="..\DeliveryStorage.Database\DeliveryStorage.Database.csproj" />
     <ProjectReference Include="..\DeliveryStorage.Domain\DeliveryStorage.Domain.csproj" />
   </ItemGroup>
 
