@@ -1,0 +1,16 @@
+﻿services:
+  deliverystorage.api:
+    container_name: delivery_db
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: delivery_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5522:5522"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-data:
