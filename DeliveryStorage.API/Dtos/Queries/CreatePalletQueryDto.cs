@@ -2,12 +2,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DeliveryStorage.API.Dtos;
 
-public class CreateBoxDto
+public class CreatePalletQueryDto
 {
-    [Required(ErrorMessage = "Дата производства это обязательное поле")]
-    [DataType(DataType.Date)]
-    public DateOnly ProductionDate { get; set; }
-    
     [Required(ErrorMessage = "Ширина это обязательное поле")]
     [Range(0.1f, float.MaxValue, ErrorMessage = "Ширина должна быть больше 0")]
     public float Width { get; set; }
@@ -19,4 +15,8 @@ public class CreateBoxDto
     [Required(ErrorMessage = "Вес это обязательное поле")]
     [Range(0.01f, float.MaxValue, ErrorMessage = "Вес должен быть больше 0")]
     public float Weight { get; set; }
+    
+    [Required(ErrorMessage = "Глубина это обязательное поле")]
+    [Range(0.1f, float.MaxValue, ErrorMessage = "Глубина должна быть больше 0")]
+    public float Depth { get; set; }
 }

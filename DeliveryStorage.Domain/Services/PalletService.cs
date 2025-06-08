@@ -19,7 +19,7 @@ public class PalletService : IPalletService
     
     public async Task<Pallet> GetByIdAsync(Guid id)
     {
-        var finded = await _palletRepository.GetByIdAsync(id);
+        var finded = await _palletRepository.GetByIdAsync(pal => pal.Id == id, pal => pal.Boxes);
         return _mapper.Map<Pallet>(finded);
     }
 
@@ -36,10 +36,10 @@ public class PalletService : IPalletService
 
         if (exists)
         {
-            var updating = await _palletRepository.GetByIdAsync(pallet.Id);
+            var updating = await _palletRepository.GetByIdAsync(pal => pal.Id == pallet.Id);
             updating.Height = pallet.Height;
             updating.Width = pallet.Width;
-            updating.Weight = pallet.Weight;
+            updating.Depth = pallet.Depth;
             updating.Boxes = _mapper.Map<List<BoxDb>>(pallet.Boxes);
             
             var updated = await _palletRepository.UpdateAsync(updating);
@@ -53,7 +53,7 @@ public class PalletService : IPalletService
         var exists = await _palletRepository.ExistsAsync(id);
         if (exists)
         {
-            var deleting = await _palletRepository.GetByIdAsync(id);
+            var deleting = await _palletRepository.GetByIdAsync(pal => pal.Id == id);
             await _palletRepository.DeleteAsync(deleting);
             return true;
         }
@@ -62,7 +62,7 @@ public class PalletService : IPalletService
 
     public async Task<List<Pallet>> GetAllAsync()
     {
-        var pallets = _mapper.Map<List<Pallet>>(await _palletRepository.GetAllAsync());
-        return pallets;
+        var pallets = await _palletRepository.GetAllAsync(pallet => pallet.Boxes);
+        return _mapper.Map<List<Pallet>>(pallets);
     }
 }

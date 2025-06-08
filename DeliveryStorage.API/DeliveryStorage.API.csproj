@@ -32,10 +32,4 @@
     <ProjectReference Include="..\DeliveryStorage.Domain\DeliveryStorage.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Include="..\.dockerignore">
-      <Link>.dockerignore</Link>
-    </Content>
-  </ItemGroup>
-
 </Project>

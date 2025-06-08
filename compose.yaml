@@ -1,5 +1,5 @@
 ﻿services:
-  deliverystorage.api:
+  delivery_db:
     container_name: delivery_db
     image: postgres
     restart: always
@@ -8,9 +8,24 @@
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     ports:
-      - "5432:5432"
+      - "5522:5432"
     volumes:
       - postgres-data:/var/lib/postgresql/data
+  
+  api:
+    container_name: delivery_storage_api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - delivery_db
+    restart: always
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Host=delivery_db;Database=delivery_db;Username=postgres;Password=postgres
 
 volumes:
   postgres-data:

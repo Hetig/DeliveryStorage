@@ -1,6 +1,6 @@
-namespace DeliveryStorage.Database.Entities;
+namespace DeliveryStorage.API.Dtos;
 
-public class BoxDb
+public class GetBoxResponseDto
 {
     public Guid Id { get; set; }
     public DateOnly ProductionDate { get; set; }
@@ -8,6 +8,4 @@ public class BoxDb
     public float Height { get; set; }
     public float Depth { get; set; }
     public float Weight { get; set; }
-    public PalletDb? Pallet { get; set; }
-    public Guid? PalletId { get; set; }
 }

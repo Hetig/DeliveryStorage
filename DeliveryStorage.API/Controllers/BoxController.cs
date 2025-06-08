@@ -39,11 +39,11 @@ namespace DeliveryStorage.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] CreateBoxDto box)
+        public async Task<IActionResult> Create([FromBody] CreateBoxQueryDto boxQuery)
         {
             try
             {
-                var created = await _boxService.AddAsync(_mapper.Map<Box>(box));
+                var created = await _boxService.AddAsync(_mapper.Map<Box>(boxQuery));
                 return Created("api/v1/Box", created);
             }
             catch (Exception ex)
@@ -54,11 +54,11 @@ namespace DeliveryStorage.API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update([FromBody] BoxDto box)
+        public async Task<IActionResult> Update([FromBody] UpdateBoxQueryDto updateBoxQuery)
         {
             try
             {
-                var updated = await _boxService.UpdateAsync(_mapper.Map<Box>(box));
+                var updated = await _boxService.UpdateAsync(_mapper.Map<Box>(updateBoxQuery));
                 return updated == null ? NotFound() : Ok(updated);
             }
             catch (Exception ex)
@@ -69,7 +69,7 @@ namespace DeliveryStorage.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete([FromBody] Guid id)
+        public async Task<IActionResult> Delete([FromRoute] Guid id)
         {
             try
             {

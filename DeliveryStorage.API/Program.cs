@@ -35,6 +35,7 @@ builder.Services.AddDbContext<DatabaseContext>(options =>
 builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
 builder.Services.AddScoped<IBoxService, BoxService>();
 builder.Services.AddScoped<IPalletService, PalletService>();
+builder.Services.AddScoped<IAssignBoxService, AssignBoxService>();
 
 builder.Services.AddAutoMapper(typeof(DeliveryStorage.Domain.Mapping.MappingProfile));
 builder.Services.AddAutoMapper(typeof(DeliveryStorage.API.Mapping.MappingProfile));

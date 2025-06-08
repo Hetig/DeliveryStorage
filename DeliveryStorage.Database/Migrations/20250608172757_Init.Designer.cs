@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DeliveryStorage.Database.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20250607204454_CreateDbSets")]
-    partial class CreateDbSets
+    [Migration("20250608172757_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,10 +31,13 @@ namespace DeliveryStorage.Database.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<float>("Depth")
+                        .HasColumnType("real");
+
                     b.Property<float>("Height")
                         .HasColumnType("real");
 
-                    b.Property<Guid?>("PalletId1")
+                    b.Property<Guid?>("PalletId")
                         .HasColumnType("uuid");
 
                     b.Property<DateOnly>("ProductionDate")
@@ -48,7 +51,7 @@ namespace DeliveryStorage.Database.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PalletId1");
+                    b.HasIndex("PalletId");
 
                     b.ToTable("Boxes");
                 });
@@ -59,10 +62,10 @@ namespace DeliveryStorage.Database.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<float>("Height")
+                    b.Property<float>("Depth")
                         .HasColumnType("real");
 
-                    b.Property<float>("Weight")
+                    b.Property<float>("Height")
                         .HasColumnType("real");
 
                     b.Property<float>("Width")
@@ -77,7 +80,7 @@ namespace DeliveryStorage.Database.Migrations
                 {
                     b.HasOne("DeliveryStorage.Database.Entities.PalletDb", "Pallet")
                         .WithMany("Boxes")
-                        .HasForeignKey("PalletId1");
+                        .HasForeignKey("PalletId");
 
                     b.Navigation("Pallet");
                 });

@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using DeliveryStorage.Database.Data;
 using DeliveryStorage.Database.Entities;
 using DeliveryStorage.Database.Interfaces;
@@ -16,14 +17,30 @@ public class BaseRepository<T> : IBaseRepository<T> where T : class
         _dbSet = _databaseContext.Set<T>();
     }
 
-    public async Task<T> GetByIdAsync(Guid id)
+    public async Task<T> GetByIdAsync(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] includes)
     {
-        return await _dbSet.FindAsync(id);
+        IQueryable<T> query = _databaseContext.Set<T>();
+        
+        if (includes != null)
+        {
+            query = includes.Aggregate(query, 
+                (current, include) => current.Include(include));
+        }
+        
+        return await query.FirstOrDefaultAsync(predicate);
     }
 
-    public async Task<IEnumerable<T>> GetAllAsync()
+    public async Task<IEnumerable<T>> GetAllAsync(params Expression<Func<T, object>>[] includeProperties)
     {
-        return await _dbSet.ToListAsync();
+        IQueryable<T> query = _databaseContext.Set<T>();
+        
+        foreach (var includeProperty in includeProperties)
+        {
+            query = query.Include(includeProperty);
+        }
+        
+        return await query.AsNoTracking()
+                            .ToListAsync();
     }
 
     public async Task<T> AddAsync(T entity)

@@ -8,10 +8,13 @@ public class MappingProfile : Profile
 {
     public MappingProfile()
     {
-        CreateMap<BoxDto, Box>().ReverseMap();
-        CreateMap<CreateBoxDto, Box>().ReverseMap();
+        CreateMap<UpdateBoxQueryDto, Box>().ReverseMap();
+        CreateMap<CreateBoxQueryDto, Box>().ReverseMap();
+        CreateMap<GetBoxResponseDto, Box>().ReverseMap();
         
-        CreateMap<PalletDto, Pallet>().ReverseMap();
-        CreateMap<CreatePalletDto, Pallet>().ReverseMap();
+        CreateMap<UpdatePalletQueryDto, Pallet>().ReverseMap();
+        CreateMap<CreatePalletQueryDto, Pallet>().ReverseMap();
+        CreateMap<GetPalletResponseDto, Pallet>().ReverseMap();
+        CreateMap<UpdatePalletResponseDto, Pallet>().ReverseMap();
     }
 }

@@ -19,9 +19,13 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A51ECCEA-496D-4ABF-B890-21CEAC7EE75B}"
 	ProjectSection(SolutionItems) = preProject
 		compose.yaml = compose.yaml
+		Dockerfile = Dockerfile
+		.dockerignore = .dockerignore
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryStorage.Database", "DeliveryStorage.Database\DeliveryStorage.Database.csproj", "{9A5C5733-AD84-4B2D-ABC7-28629526A089}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryStorage.Client", "DeliveryStorage.Client\DeliveryStorage.Client.csproj", "{B491CD64-FA52-4778-BEFD-3D22DDACCB97}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +49,10 @@ Global
 		{9A5C5733-AD84-4B2D-ABC7-28629526A089}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A5C5733-AD84-4B2D-ABC7-28629526A089}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A5C5733-AD84-4B2D-ABC7-28629526A089}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B491CD64-FA52-4778-BEFD-3D22DDACCB97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B491CD64-FA52-4778-BEFD-3D22DDACCB97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B491CD64-FA52-4778-BEFD-3D22DDACCB97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B491CD64-FA52-4778-BEFD-3D22DDACCB97}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

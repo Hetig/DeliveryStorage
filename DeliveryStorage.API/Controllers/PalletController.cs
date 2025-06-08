@@ -28,7 +28,7 @@ namespace DeliveryStorage.API.Controllers
             try
             {
                 var pallets = await _palletService.GetAllAsync();
-                return Ok(pallets);
+                return Ok(_mapper.Map<List<GetPalletResponseDto>>(pallets));
             }
             catch (Exception ex)
             {
@@ -38,11 +38,11 @@ namespace DeliveryStorage.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] CreatePalletDto pallet)
+        public async Task<IActionResult> Create([FromBody] CreatePalletQueryDto palletQuery)
         {
             try
             {
-                var created = await _palletService.AddAsync(_mapper.Map<Pallet>(pallet));
+                var created = await _palletService.AddAsync(_mapper.Map<Pallet>(palletQuery));
                 return Created("api/v1/Box", created);
             }
             catch (Exception ex)
@@ -53,12 +53,12 @@ namespace DeliveryStorage.API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update([FromBody] PalletDto pallet)
+        public async Task<IActionResult> Update([FromBody] UpdatePalletQueryDto updatePalletQuery)
         {
             try
             {
-                var updated = await _palletService.UpdateAsync(_mapper.Map<Pallet>(pallet));
-                return updated == null ? NotFound() : Ok(updated);
+                var updated = await _palletService.UpdateAsync(_mapper.Map<Pallet>(updatePalletQuery));
+                return updated == null ? NotFound() : Ok(_mapper.Map<UpdatePalletResponseDto>(updated));
             }
             catch (Exception ex)
             {
@@ -68,7 +68,7 @@ namespace DeliveryStorage.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete([FromBody] Guid id)
+        public async Task<IActionResult> Delete([FromRoute] Guid id)
         {
             try
             {
@@ -88,7 +88,7 @@ namespace DeliveryStorage.API.Controllers
             try
             {
                 var finded = await _palletService.GetByIdAsync(id);
-                return finded == null ? NotFound() : Ok(finded);
+                return finded == null ? NotFound() : Ok(_mapper.Map<GetPalletResponseDto>(finded));
             }
             catch (Exception ex)
             {

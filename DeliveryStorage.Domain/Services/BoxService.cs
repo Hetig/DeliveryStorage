@@ -19,7 +19,7 @@ public class BoxService : IBoxService
     
     public async Task<Box> GetByIdAsync(Guid id)
     {
-        var finded = await _boxRepository.GetByIdAsync(id);
+        var finded = await _boxRepository.GetByIdAsync(box => box.Id == box.Id);
         return _mapper.Map<Box>(finded);
     }
 
@@ -36,14 +36,16 @@ public class BoxService : IBoxService
 
         if (exists)
         {
-            var updating = await _boxRepository.GetByIdAsync(box.Id);
+            var updating = await _boxRepository.GetByIdAsync(b => b.Id == box.Id);
+            
             updating.Height = box.Height;
             updating.Width = box.Width;
             updating.Weight = box.Weight;
             updating.ProductionDate = box.ProductionDate;
+            updating.Depth = box.Depth;
             
-            await _boxRepository.UpdateAsync(updating);
-            return _mapper.Map<Box>(updating);
+            var updated  = await _boxRepository.UpdateAsync(updating);
+            return _mapper.Map<Box>(updated);
         }
         
         return null;
@@ -54,7 +56,7 @@ public class BoxService : IBoxService
         var exists = await _boxRepository.ExistsAsync(id);
         if (exists)
         {
-            var deleting = await _boxRepository.GetByIdAsync(id);
+            var deleting = await _boxRepository.GetByIdAsync(box => box.Id == id);
             await _boxRepository.DeleteAsync(deleting);
             return true;
         }

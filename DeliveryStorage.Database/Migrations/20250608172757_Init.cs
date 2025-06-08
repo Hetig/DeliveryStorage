@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DeliveryStorage.Database.Migrations
 {
     /// <inheritdoc />
-    public partial class CreateDbSets : Migration
+    public partial class Init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -18,7 +18,7 @@ namespace DeliveryStorage.Database.Migrations
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     Width = table.Column<float>(type: "real", nullable: false),
                     Height = table.Column<float>(type: "real", nullable: false),
-                    Weight = table.Column<float>(type: "real", nullable: false)
+                    Depth = table.Column<float>(type: "real", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -33,23 +33,24 @@ namespace DeliveryStorage.Database.Migrations
                     ProductionDate = table.Column<DateOnly>(type: "date", nullable: false),
                     Width = table.Column<float>(type: "real", nullable: false),
                     Height = table.Column<float>(type: "real", nullable: false),
+                    Depth = table.Column<float>(type: "real", nullable: false),
                     Weight = table.Column<float>(type: "real", nullable: false),
-                    PalletId1 = table.Column<Guid>(type: "uuid", nullable: true)
+                    PalletId = table.Column<Guid>(type: "uuid", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Boxes", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Boxes_Pallets_PalletId1",
-                        column: x => x.PalletId1,
+                        name: "FK_Boxes_Pallets_PalletId",
+                        column: x => x.PalletId,
                         principalTable: "Pallets",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Boxes_PalletId1",
+                name: "IX_Boxes_PalletId",
                 table: "Boxes",
-                column: "PalletId1");
+                column: "PalletId");
         }
 
         /// <inheritdoc />
