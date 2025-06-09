@@ -51,7 +51,7 @@
 
     ```bash
     git clone https://github.com/Hetig/DeliveryStorage.git
-    cd CargoDelivery
+    cd DeliveryStorage
     ```
 
 2. Поднимите контейнер с приложением используя команду в терминале:
@@ -60,7 +60,7 @@
     docker-compose up -d --build
     ```
 
-4. Запустите клиентское консольное приложение
+3. Запустите клиентское консольное приложение
 
 
 
