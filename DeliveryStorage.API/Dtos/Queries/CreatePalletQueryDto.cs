@@ -12,10 +12,6 @@ public class CreatePalletQueryDto
     [Range(0.1f, float.MaxValue, ErrorMessage = "Высота должна быть больше 0")]
     public float Height { get; set; }
     
-    [Required(ErrorMessage = "Вес это обязательное поле")]
-    [Range(0.01f, float.MaxValue, ErrorMessage = "Вес должен быть больше 0")]
-    public float Weight { get; set; }
-    
     [Required(ErrorMessage = "Глубина это обязательное поле")]
     [Range(0.1f, float.MaxValue, ErrorMessage = "Глубина должна быть больше 0")]
     public float Depth { get; set; }
